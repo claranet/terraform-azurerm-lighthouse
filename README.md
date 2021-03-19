@@ -1,3 +1,75 @@
-# lighthouse
+# Azure Lighthouse
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/lighthouse/azurerm/)
 
-Azure LigthHouse module
+Azure terraform module to create a Lighthouse definition and assign it to scopes where management delegation is needed.
+
+## Version compatibility
+
+| Module version | Terraform version | AzureRM version |
+|----------------|-------------------| --------------- |
+| >= 4.x.x       | 0.13.x            | >= 2.0          |
+| >= 3.x.x       | 0.12.x            | >= 2.0          |
+
+## Usage
+
+This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool
+which set some terraform variables in the environment needed by this module.
+More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
+
+```hcl
+locals {
+  subscription_id    = "/subscriptions/${var.azure_subscription_id}"
+}
+
+module "msp" {
+  source  = "claranet/lighthouse/azurerm"
+  version = "x.x.x"
+
+  name                    = "Claranet MSP"
+  description             = "Lighthouse delegation to let Claranet manage resources."
+  managing_tenant_id      = local.claranet_tenant_id
+  managed_subscription_id = local.subscription_id
+
+  authorizations = [
+    {
+      principal_id   = "00000000-0000-0000-0000-000000000000"
+      principal_name = "L1 Claranet CORE Team"
+      role_name      = "contributor"
+    },
+    {
+      principal_id   = "00000000-0000-0000-0000-000000000000"
+      principal_name = "L2 Claranet OnCall Build Team"
+      role_name      = "contributor"
+    },
+    {
+      principal_id   = "00000000-0000-0000-0000-000000000000"
+      principal_name = "Claranet SDM"
+      role_name      = "reader"
+    },
+  ]
+
+  scopes = [local.subscription_id]
+}
+```
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| authorizations | List of Authorization objects. | <pre>list(object({<br>    principal_id   = string<br>    principal_name = string<br>    role_name      = string<br>  }))</pre> | n/a | yes |
+| description | A description of the Lighthouse Definition. | `string` | `null` | no |
+| managed\_subscription\_id | The ID of the managed subscription. | `string` | n/a | yes |
+| managing\_tenant\_id | The ID of the managing tenant. | `string` | n/a | yes |
+| name | The name of the Lighthouse Definition. | `string` | n/a | yes |
+| scopes | List of Scope IDs to associate the Lighthouse definition (Subscription ID or Resource Group ID). | `list(string)` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| lighthouse\_definition\_id | Lighthouse definition ID |
+
+## Related documentation
+
+- Terraform Azure Lighthouse documentation: [registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition)
+- Microsoft Azure Lighthouse documentation: [docs.microsoft.com/en-us/azure/lighthouse](https://docs.microsoft.com/en-us/azure/lighthouse)

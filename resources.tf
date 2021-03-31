@@ -16,7 +16,8 @@ resource "azurerm_lighthouse_definition" "lighthouse_def" {
     content {
       principal_id           = authorization.value.principal_id
       principal_display_name = authorization.value.principal_name
-      role_definition_id     = replace(data.azurerm_role_definition.builtin_role[authorization.value.role_name].id, "//providers/Microsoft.Authorization/roleDefinitions//", "")
+      # related issue: https://github.com/terraform-providers/terraform-provider-azurerm/issues/11172
+      role_definition_id = replace(lower(data.azurerm_role_definition.builtin_role[authorization.value.role_name].id), lower("//providers/Microsoft.Authorization/roleDefinitions//"), "")
     }
   }
 }

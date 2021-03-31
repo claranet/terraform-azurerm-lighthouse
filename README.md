@@ -34,17 +34,17 @@ module "msp" {
     {
       principal_id   = "00000000-0000-0000-0000-000000000000"
       principal_name = "L1 Claranet CORE Team"
-      role_name      = "contributor"
+      role_name      = "Contributor"
     },
     {
       principal_id   = "00000000-0000-0000-0000-000000000000"
       principal_name = "L2 Claranet OnCall Build Team"
-      role_name      = "contributor"
+      role_name      = "Contributor"
     },
     {
       principal_id   = "00000000-0000-0000-0000-000000000000"
       principal_name = "Claranet SDM"
-      role_name      = "reader"
+      role_name      = "Reader"
     },
   ]
 

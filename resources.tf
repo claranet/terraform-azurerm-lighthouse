@@ -1,10 +1,7 @@
 data "azurerm_role_definition" "builtin_role" {
-  for_each = {
-    contributor = "b24988ac-6180-42a0-ab88-20f7382dd24c"
-    reader      = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-  }
+  for_each = toset([for a in var.authorizations : a.role_name])
 
-  role_definition_id = each.value
+  name = each.value
 }
 
 resource "azurerm_lighthouse_definition" "lighthouse_def" {
@@ -19,7 +16,7 @@ resource "azurerm_lighthouse_definition" "lighthouse_def" {
     content {
       principal_id           = authorization.value.principal_id
       principal_display_name = authorization.value.principal_name
-      role_definition_id     = data.azurerm_role_definition.builtin_role[authorization.value.role_name].role_definition_id
+      role_definition_id     = replace(data.azurerm_role_definition.builtin_role[authorization.value.role_name].id, "//providers/Microsoft.Authorization/roleDefinitions//", "")
     }
   }
 }

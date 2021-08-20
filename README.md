@@ -6,7 +6,8 @@ Azure terraform module to create a Lighthouse definition and assign it to scopes
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
-|----------------|-------------------| --------------- |
+| -------------- | ----------------- | --------------- |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
 | >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 
@@ -52,6 +53,25 @@ module "msp" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [azurerm_lighthouse_assignment.lighthouse_assign](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_assignment) | resource |
+| [azurerm_lighthouse_definition.lighthouse_def](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition) | resource |
+| [azurerm_role_definition.builtin_role](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -68,8 +88,7 @@ module "msp" {
 | Name | Description |
 |------|-------------|
 | lighthouse\_definition\_id | Lighthouse definition ID |
-
+<!-- END_TF_DOCS -->
 ## Related documentation
 
-- Terraform Azure Lighthouse documentation: [registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition)
 - Microsoft Azure Lighthouse documentation: [docs.microsoft.com/en-us/azure/lighthouse](https://docs.microsoft.com/en-us/azure/lighthouse)

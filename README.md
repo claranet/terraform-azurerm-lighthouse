@@ -58,7 +58,7 @@ module "msp" {
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.28 |
+| azurerm | >= 2.48 |
 
 ## Modules
 

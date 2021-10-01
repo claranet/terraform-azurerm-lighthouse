@@ -3,13 +3,16 @@
 
 Azure terraform module to create a Lighthouse definition and assign it to scopes where management delegation is needed.
 
-## Version compatibility
+<!-- BEGIN_TF_DOCS -->
+## Global versioning rule for Claranet Azure modules
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
 | >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
 | >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
+| >= 2.x.x       | 0.12.x            | < 2.0           |
+| <  2.x.x       | 0.11.x            | < 2.0           |
 
 ## Usage
 
@@ -19,6 +22,7 @@ More details about variables set by the `terraform-wrapper` available in the [do
 
 ```hcl
 locals {
+  claranet_tenant_id = "00000000-0000-0000-0000-000000000000"
   subscription_id    = "/subscriptions/${var.azure_subscription_id}"
 }
 
@@ -51,9 +55,9 @@ module "msp" {
 
   scopes = [local.subscription_id]
 }
+
 ```
 
-<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 | Name | Version |

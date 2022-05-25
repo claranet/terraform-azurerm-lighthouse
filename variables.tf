@@ -29,6 +29,6 @@ variable "authorizations" {
 }
 
 variable "scopes" {
-  description = "List of Scope IDs to associate the Lighthouse definition (Subscription ID or Resource Group ID)."
-  type        = list(string)
+  description = "Map of 'name => Scope IDs' to associate the Lighthouse definition (Subscription ID or Resource Group ID)."
+  type        = map(string)
 }

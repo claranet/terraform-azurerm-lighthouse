@@ -30,5 +30,7 @@ module "msp" {
     },
   ]
 
-  scopes = [local.subscription_id]
+  scopes = {
+    "Production Subscription" = local.subscription_id
+  }
 }

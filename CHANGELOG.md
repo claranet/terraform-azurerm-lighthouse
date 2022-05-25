@@ -1,5 +1,9 @@
 # Unreleased
 
+Breaking
+  * AZ-717: Minimum Terraform version required `v1.1`
+  * AZ-717: Upgrade module to AzureRM provider `v3.0+`
+
 Changed
   * AZ-572: Revamp examples and improve CI
 

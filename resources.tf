@@ -23,7 +23,7 @@ resource "azurerm_lighthouse_definition" "lighthouse_def" {
 }
 
 resource "azurerm_lighthouse_assignment" "lighthouse_assign" {
-  for_each = toset(var.scopes)
+  for_each = var.scopes
 
   scope                    = each.value
   lighthouse_definition_id = azurerm_lighthouse_definition.lighthouse_def.id

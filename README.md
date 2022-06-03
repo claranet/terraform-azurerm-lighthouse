@@ -54,7 +54,9 @@ module "msp" {
     },
   ]
 
-  scopes = [local.subscription_id]
+  scopes = {
+    "Production Subscription" = local.subscription_id
+  }
 }
 ```
 
@@ -62,7 +64,7 @@ module "msp" {
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.48 |
+| azurerm | ~> 3.0 |
 
 ## Modules
 
@@ -85,7 +87,7 @@ No modules.
 | managed\_subscription\_id | The ID of the managed subscription. | `string` | n/a | yes |
 | managing\_tenant\_id | The ID of the managing tenant. | `string` | n/a | yes |
 | name | The name of the Lighthouse Definition. | `string` | n/a | yes |
-| scopes | List of Scope IDs to associate the Lighthouse definition (Subscription ID or Resource Group ID). | `list(string)` | n/a | yes |
+| scopes | Map of 'name => Scope IDs' to associate the Lighthouse definition (Subscription ID or Resource Group ID). | `map(string)` | n/a | yes |
 
 ## Outputs
 

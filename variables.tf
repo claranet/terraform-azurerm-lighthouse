@@ -22,9 +22,10 @@ variable "description" {
 variable "authorizations" {
   description = "List of Authorization objects."
   type = list(object({
-    principal_id   = string
-    principal_name = string
-    role_name      = string
+    principal_id         = string
+    principal_name       = string
+    role_name            = string
+    delegated_role_names = optional(list(string))
   }))
 }
 

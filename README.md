@@ -60,6 +60,13 @@ module "msp" {
       principal_name = "Claranet SDM"
       role_name      = "Reader"
     },
+    {
+      principal_id   = "00000000-0000-0000-0000-000000000000"
+      principal_name = "MSI Admin"
+      # https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles
+      role_name            = "User Access Administrator"
+      delegated_role_names = ["Contributor", "AcrPull", "AcrPush"]
+    },
   ]
 
   scopes = {
@@ -85,12 +92,13 @@ No modules.
 | [azurerm_lighthouse_assignment.lighthouse_assign](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_assignment) | resource |
 | [azurerm_lighthouse_definition.lighthouse_def](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition) | resource |
 | [azurerm_role_definition.builtin_role](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
+| [azurerm_role_definition.builtin_role_delegated](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| authorizations | List of Authorization objects. | <pre>list(object({<br>    principal_id   = string<br>    principal_name = string<br>    role_name      = string<br>  }))</pre> | n/a | yes |
+| authorizations | List of Authorization objects. | <pre>list(object({<br>    principal_id         = string<br>    principal_name       = string<br>    role_name            = string<br>    delegated_role_names = optional(list(string))<br>  }))</pre> | n/a | yes |
 | description | A description of the Lighthouse Definition. | `string` | `null` | no |
 | managed\_subscription\_id | The ID of the managed subscription. | `string` | n/a | yes |
 | managing\_tenant\_id | The ID of the managing tenant. | `string` | n/a | yes |

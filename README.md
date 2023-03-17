@@ -100,8 +100,8 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | authorizations | List of Authorization objects. | <pre>list(object({<br>    principal_id         = string<br>    principal_name       = string<br>    role_name            = string<br>    delegated_role_names = optional(list(string))<br>  }))</pre> | n/a | yes |
 | description | A description of the Lighthouse Definition. | `string` | `null` | no |
-| managed\_subscription\_id | The ID of the managed subscription. | `string` | n/a | yes |
-| managing\_tenant\_id | The ID of the managing tenant. | `string` | n/a | yes |
+| managed\_subscription\_id | The ID of the managed Subscription that will contains the Lighthouse Definition. (Recommended to use Management or Shared-Services Subscription in a Landing Zone context.) | `string` | n/a | yes |
+| managing\_tenant\_id | The ID of the managing Tenant. | `string` | n/a | yes |
 | name | The name of the Lighthouse Definition. | `string` | n/a | yes |
 | scopes | Map of 'name => Scope IDs' to associate the Lighthouse definition (Subscription ID or Resource Group ID). | `map(string)` | n/a | yes |
 

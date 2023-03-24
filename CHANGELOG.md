@@ -1,4 +1,4 @@
-# Unreleased
+# v7.0.0 - 2023-03-24
 
 Breaking
   * AZ-1016: Minimum Terraform version required `v1.3`

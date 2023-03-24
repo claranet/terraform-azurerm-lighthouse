@@ -1,3 +1,11 @@
+# Unreleased
+
+Breaking
+  * AZ-1016: Minimum Terraform version required `v1.3`
+
+Added
+  * AZ-1016: Support `delegated_role_names` attribute in authorizations for `User Access Administrator` role
+
 # v6.0.0 - 2022-06-03
 
 Breaking

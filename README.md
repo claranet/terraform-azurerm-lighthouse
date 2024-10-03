@@ -98,7 +98,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| authorizations | List of Authorization objects. | <pre>list(object({<br>    principal_id         = string<br>    principal_name       = string<br>    role_name            = string<br>    delegated_role_names = optional(list(string))<br>  }))</pre> | n/a | yes |
+| authorizations | List of Authorization objects. | <pre>list(object({<br/>    principal_id         = string<br/>    principal_name       = string<br/>    role_name            = string<br/>    delegated_role_names = optional(list(string))<br/>  }))</pre> | n/a | yes |
 | description | A description of the Lighthouse Definition. | `string` | `null` | no |
 | managed\_subscription\_id | The ID of the managed Subscription that will contains the Lighthouse Definition. (Recommended to use Management or Shared-Services Subscription in a Landing Zone context.) | `string` | n/a | yes |
 | managing\_tenant\_id | The ID of the managing Tenant. | `string` | n/a | yes |

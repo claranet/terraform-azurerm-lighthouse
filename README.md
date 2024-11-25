@@ -34,11 +34,6 @@ More details about variables set by the `terraform-wrapper` available in the [do
 [Hashicorp Terraform](https://github.com/hashicorp/terraform/). Instead, we recommend to use [OpenTofu](https://github.com/opentofu/opentofu/).
 
 ```hcl
-locals {
-  claranet_tenant_id = "00000000-0000-0000-0000-000000000000"
-  subscription_id    = "/subscriptions/${var.azure_subscription_id}"
-}
-
 module "msp" {
   source  = "claranet/lighthouse/azurerm"
   version = "x.x.x"
@@ -83,7 +78,7 @@ module "msp" {
 
 | Name | Version |
 |------|---------|
-| azurerm | ~> 3.0 |
+| azurerm | ~> 4.0 |
 
 ## Modules
 
@@ -93,8 +88,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_lighthouse_assignment.lighthouse_assign](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_assignment) | resource |
-| [azurerm_lighthouse_definition.lighthouse_def](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition) | resource |
+| [azurerm_lighthouse_assignment.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_assignment) | resource |
+| [azurerm_lighthouse_definition.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition) | resource |
 | [azurerm_role_definition.builtin_role](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
 | [azurerm_role_definition.builtin_role_delegated](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
 
@@ -113,7 +108,9 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| lighthouse\_definition\_id | Lighthouse definition ID |
+| id | Lighthouse definition ID. |
+| resource | Lighthouse resource object. |
+| resource\_assignments | Lighthouse assignment resource objects. |
 <!-- END_TF_DOCS -->
 ## Related documentation
 

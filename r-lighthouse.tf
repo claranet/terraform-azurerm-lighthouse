@@ -1,16 +1,9 @@
-data "azurerm_role_definition" "builtin_role" {
-  for_each = toset([for a in var.authorizations : a.role_name])
-
-  name = each.value
+moved {
+  from = azurerm_lighthouse_definition.lighthouse_def
+  to   = azurerm_lighthouse_definition.main
 }
 
-data "azurerm_role_definition" "builtin_role_delegated" {
-  for_each = toset(distinct(compact(flatten([for a in var.authorizations : a.delegated_role_names if a.delegated_role_names != null]))))
-
-  name = each.value
-}
-
-resource "azurerm_lighthouse_definition" "lighthouse_def" {
+resource "azurerm_lighthouse_definition" "main" {
   name               = var.name
   description        = var.description
   managing_tenant_id = var.managing_tenant_id
@@ -41,9 +34,14 @@ resource "azurerm_lighthouse_definition" "lighthouse_def" {
   }
 }
 
-resource "azurerm_lighthouse_assignment" "lighthouse_assign" {
+moved {
+  from = azurerm_lighthouse_assignment.lighthouse_assign
+  to   = azurerm_lighthouse_assignment.main
+}
+
+resource "azurerm_lighthouse_assignment" "main" {
   for_each = var.scopes
 
   scope                    = each.value
-  lighthouse_definition_id = azurerm_lighthouse_definition.lighthouse_def.id
+  lighthouse_definition_id = azurerm_lighthouse_definition.main.id
 }

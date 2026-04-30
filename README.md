@@ -77,7 +77,7 @@ module "msp" {
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | azurerm | ~> 4.31 |
 
 ## Modules
@@ -87,7 +87,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [azurerm_lighthouse_assignment.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_assignment) | resource |
 | [azurerm_lighthouse_definition.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lighthouse_definition) | resource |
 | [azurerm_role_definition.builtin_role](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
@@ -96,7 +96,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | authorizations | List of Authorization objects. | <pre>list(object({<br/>    principal_id         = string<br/>    principal_name       = string<br/>    role_name            = string<br/>    delegated_role_names = optional(list(string))<br/>  }))</pre> | n/a | yes |
 | description | A description of the Lighthouse Definition. | `string` | `null` | no |
 | managed\_subscription\_id | The ID of the managed Subscription that will contains the Lighthouse Definition. (Recommended to use Management or Shared-Services Subscription in a Landing Zone context.) | `string` | n/a | yes |
@@ -107,7 +107,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | id | Lighthouse definition ID. |
 | resource | Lighthouse resource object. |
 | resource\_assignments | Lighthouse assignment resource objects. |

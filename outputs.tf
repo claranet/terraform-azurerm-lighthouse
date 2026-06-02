@@ -6,9 +6,11 @@ output "id" {
 output "resource" {
   value       = azurerm_lighthouse_definition.main
   description = "Lighthouse resource object."
+  sensitive   = true
 }
 
 output "resource_assignments" {
   value       = azurerm_lighthouse_assignment.main
+  sensitive   = true
   description = "Lighthouse assignment resource objects."
 }

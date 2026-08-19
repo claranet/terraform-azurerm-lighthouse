@@ -79,7 +79,7 @@ module "msp" {
 
 | Name | Version |
 | ---- | ------- |
-| azurerm | ~> 4.31 |
+| azurerm | ~> 5.0 |
 
 ## Modules
 
